@@ -7,3 +7,7 @@ bs4
 arxiv
 PyMuPDF
 wikipedia
+sentence_transformers
+langchain_huggingface
+langchain_openai
+chromadb
