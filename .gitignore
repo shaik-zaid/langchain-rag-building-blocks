@@ -1,2 +1,7 @@
 venv
 .env
+vectorstore_storage/
+*.faiss
+*.pkl
+*.sqlite3
+*.bin
