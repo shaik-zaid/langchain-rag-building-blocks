@@ -1,34 +1,34 @@
-LANGCHAIN EMBEDDINGS
+# LangChain Embeddings
 
-Embeddings convert text into numerical vectors.
+Embeddings convert **text into numerical vectors**.
 
-These vectors represent the semantic meaning of the text. Similar texts will have similar vector representations.
+These vectors represent the **semantic meaning of the text**. Similar texts will have similar vector representations.
 
 Embeddings are used in many AI tasks such as:
+
 - Semantic search
 - Document retrieval
 - Question answering
 - Recommendation systems
 - Retrieval-Augmented Generation (RAG)
 
+---
 
---------------------------------------------------
-
-WHY EMBEDDINGS ARE IMPORTANT
+# Why Embeddings Are Important
 
 Large Language Models cannot directly search large datasets efficiently.
 
-Instead, text is converted into vectors using embeddings.
+Instead, text is converted into **vectors using embeddings**.
 
-These vectors are stored in a vector database.
+These vectors are stored in a **vector database**.
 
 When a user asks a question, the question is also converted into a vector and compared with stored vectors to find the most relevant documents.
 
+---
 
---------------------------------------------------
+# Embedding Workflow
 
-EMBEDDING WORKFLOW
-
+```
 Text
  ↓
 Embedding Model
@@ -40,29 +40,34 @@ Vector Database
 Similarity Search
  ↓
 Relevant Documents
-
+```
 
 Example:
 
 Text:
-"Machine learning is a subset of AI"
+
+```
+Machine learning is a subset of AI
+```
 
 Embedding Vector:
+
+```
 [0.12, -0.34, 0.56, 0.91, ...]
+```
 
+---
 
---------------------------------------------------
-
-1. OPENAI EMBEDDINGS
+# 1. OpenAI Embeddings
 
 OpenAI provides powerful embedding models such as:
 
-text-embedding-3-small
-text-embedding-3-large
+- `text-embedding-3-small`
+- `text-embedding-3-large`
 
+### Example Code
 
-Example Code:
-
+```python
 from langchain_openai import OpenAIEmbeddings
 
 embeddings = OpenAIEmbeddings(
@@ -70,21 +75,23 @@ embeddings = OpenAIEmbeddings(
 )
 
 vector = embeddings.embed_query("What is machine learning?")
+```
 
+---
 
---------------------------------------------------
+# 2. HuggingFace Embeddings
 
-2. HUGGINGFACE EMBEDDINGS
-
-HuggingFace provides many open-source embedding models.
+HuggingFace provides many **open-source embedding models**.
 
 Common model:
 
+```
 sentence-transformers/all-MiniLM-L6-v2
+```
 
+### Example Code
 
-Example Code:
-
+```python
 from langchain_huggingface import HuggingFaceEmbeddings
 
 embeddings = HuggingFaceEmbeddings(
@@ -92,27 +99,29 @@ embeddings = HuggingFaceEmbeddings(
 )
 
 vector = embeddings.embed_query("What is deep learning?")
-
+```
 
 Vector dimension for this model:
 
+```
 384
+```
 
+---
 
---------------------------------------------------
+# 3. Ollama Embeddings
 
-3. OLLAMA EMBEDDINGS
-
-Ollama allows running embedding models locally.
+Ollama allows running **embedding models locally**.
 
 This is useful when:
+
 - you want privacy
 - you want to avoid API costs
 - you want offline embeddings
 
+### Example Code
 
-Example Code:
-
+```python
 from langchain_ollama import OllamaEmbeddings
 
 embeddings = OllamaEmbeddings(
@@ -120,50 +129,50 @@ embeddings = OllamaEmbeddings(
 )
 
 vector = embeddings.embed_query("Explain artificial intelligence")
+```
 
+---
 
---------------------------------------------------
+# Embed Documents vs Embed Query
 
-EMBED DOCUMENTS VS EMBED QUERY
+### embed_documents()
 
-embed_documents()
-
-Used for converting documents into vectors.
+Used for converting **documents into vectors**.
 
 Example:
 
+```python
 texts = [
     "Machine learning is a subset of AI",
     "Deep learning uses neural networks"
 ]
 
 vectors = embeddings.embed_documents(texts)
+```
 
+### embed_query()
 
-embed_query()
-
-Used for converting user queries into vectors.
-
+Used for converting **user queries into vectors**.
 
 Example:
 
+```python
 query_vector = embeddings.embed_query(
     "What is machine learning?"
 )
+```
 
+---
 
---------------------------------------------------
+# Key Idea
 
-KEY IDEA
+Embeddings convert **text into vectors** so that similarity search can be performed.
 
-Embeddings convert text into vectors so that similarity search can be performed.
-
-These vectors are later stored in vector databases like:
+These vectors are later stored in **vector databases** such as:
 
 - FAISS
 - Chroma
 - Pinecone
 - Weaviate
 
-
-Embeddings are a core component of RAG pipelines.
+Embeddings are a **core component of RAG pipelines**.
